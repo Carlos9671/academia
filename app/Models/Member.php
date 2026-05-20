@@ -26,7 +26,6 @@ class Member extends Authenticatable
 
     protected $casts = [
         'last_checkin_at' => 'datetime',
-        'password' => 'hashed',
     ];
 
     public function gym()

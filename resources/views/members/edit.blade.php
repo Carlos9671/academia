@@ -46,21 +46,13 @@
             </div>
 
             <div class="mb-4">
-                <label class="block text-sm font-medium mb-2">Dias de Treino</label>
-                <div class="flex flex-wrap gap-3">
-                    @foreach(['0' => 'Dom', '1' => 'Seg', '2' => 'Ter', '3' => 'Qua', '4' => 'Qui', '5' => 'Sex', '6' => 'Sáb'] as $value => $label)
-                        <label class="flex items-center gap-1 text-sm cursor-pointer">
-                            <input type="checkbox" name="training_days[]" value="{{ $value }}"
-                                {{ in_array($value, old('training_days', $member->training_days ?? [])) ? 'checked' : '' }}
-                                class="accent-orange-500">
-                            {{ $label }}
-                        </label>
-                    @endforeach
-                </div>
-                @error('training_days')
-                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
-            </div>
+    <label class="block text-sm font-medium mb-1">Dias de Treino por Semana</label>
+    <input type="number" name="training_days" min="1" max="5" value="{{ old('training_days', $member->training_days) }}"
+        class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400">
+    @error('training_days')
+        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+    @enderror
+</div>
 
             <div class="mb-6">
                 <label class="block text-sm font-medium mb-1">Status</label>

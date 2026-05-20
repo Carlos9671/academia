@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('check_ins', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('gym_id')->constrained()->cascadeOnDelete();
+            $table->timestamp('checked_in_at');
             $table->timestamps();
         });
     }

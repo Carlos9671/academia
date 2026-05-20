@@ -46,7 +46,7 @@
         <div class="bg-gray-800 rounded-2xl p-4 mb-6 flex justify-between items-center">
             <div>
                 <p class="text-gray-400 text-xs">Seu recorde</p>
-                <p class="text-white font-bold text-lg">{{ Auth::user()->streak_longest }} dias 🏅</p>
+                <p class="text-white font-bold text-lg">{{ Auth::user()->streak_longest }} semanas 🏅</p>
             </div>
             <div>
                 <p class="text-gray-400 text-xs">Academia</p>
@@ -56,18 +56,8 @@
 
         <!-- Dias de treino -->
         <div class="bg-gray-800 rounded-2xl p-4 mb-6">
-            <p class="text-gray-400 text-xs mb-3">Seus dias de treino</p>
-            <div class="flex justify-between">
-                @foreach(['0' => 'D', '1' => 'S', '2' => 'T', '3' => 'Q', '4' => 'Q', '5' => 'S', '6' => 'S'] as $value => $label)
-                    <div class="flex flex-col items-center gap-1">
-                        <span class="text-xs text-gray-500">{{ $label }}</span>
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold
-                            {{ in_array($value, Auth::user()->training_days ?? []) ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-500' }}">
-                            {{ in_array($value, Auth::user()->training_days ?? []) ? '✓' : '' }}
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <p class="text-gray-400 text-xs mb-3">Dias de treino por semana</p>
+            <p class="text-orange-500 font-bold text-2xl text-center">{{ Auth::user()->training_days }}x</p>
         </div>
 
         <!-- Ultimo checkin -->

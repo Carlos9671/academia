@@ -44,6 +44,7 @@ class MemberController extends Controller
             'name'=> $request->name,
             'phone'=> $request->phone,
             'training_days' => $request->training_days,
+            'password'=> bcrypt('123456'),
         ]);
 
         return redirect()->route('members.index')->with('success', 'Aluno cadastrado com sucesso');
@@ -72,7 +73,7 @@ class MemberController extends Controller
     public function update(Request $request, Member $member)
     {
         $request->validate([
-            'name' => 'required|string|max:255',~
+            'name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
             'training_days' => 'required|integer|min:1|max:5',
         ]);
