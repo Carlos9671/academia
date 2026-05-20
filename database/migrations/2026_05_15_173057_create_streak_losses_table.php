@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('streak_losses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id')->constrained()->cascadeOnDelete();
+            $table->integer('streak_count');
+            $table->date('lost_at');
             $table->timestamps();
         });
     }
