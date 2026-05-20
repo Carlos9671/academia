@@ -20,15 +20,15 @@ class CheckInController extends Controller
 
     public function store(Request $request, $token)
     {
-        $gym = Gym::where('token', $token)->firtOrFail();
+        $gym = Gym::where('token', $token)->firstOrFail();
 
         $request->validate([
-            'member_id'=> 'required|exists:members_id',
+            'member_id'=> 'required|exists:members,id',
         ]);
 
         $member = Member::findOrFail($request->member_id);
 
-        $jaFezCheckin = Checkin::where('member_id', $meber->id)
+        $jaFezCheckin = CheckIn::where('member_id', $member->id)
         ->whereDate('checked_in_at', Carbon::today())->exists();
 
         if ($jaFezCheckin) {
@@ -41,22 +41,26 @@ class CheckInController extends Controller
             'checked_in_at' => Carbon::now(),
         ]);
 
-        $ultimoCheckin = $member->last_checkin_at;
-        $ontem = Carbon::yesterday()->startofDay();
-
-        if ($ultimoCheckin && Carbon::parse($ultimoCheckin)->greaterThanOrEqualTo($ontem)) {
-            $member->streak_current += 1;
-        } else {
-            $member->streak_current = 1;
-        }
-
-        if ($member->streak_current > $member->streak_longest) {
-            $member->streak_longest = $member->streak_current;
-        }
-
         $member->last_checkin_at = Carbon::now();
         $member->save();
 
-        return back()->with('success', 'Check-in realizado! Sua ofensiva está em {$member->streak_current} dias 🔥');
+        $dias_totais = $member->training_days;
+
+        $checkins_semana = CheckIn::where('member_id', $member->id)
+            ->whereBetween('checked_in_at', [
+                Carbon::now()->startOfWeek(),
+                Carbon::now()->endOfWeek(),
+            ])->count();
+
+        if ($checkins_semana >= $dias_totais) {
+            $member->streak_current += 1;
+            if ($member->streak_current > $member->streak_longest) {
+                $member->streak_longest = $member->streak_current;
+            }
+            $member->save();
+            return back()->with('success', "Você completou sua semana! Ofensiva em {$member->streak_current} semanas 🏆");
+        }
+
+        return back()->with('success', "Check-in realizado! Você foi {$checkins_semana} de {$dias_totais} da semana 🔥");
     }
 }
