@@ -15,6 +15,9 @@
                 <p class="text-gray-400 text-sm">Olá,</p>
                 <h1 class="text-white font-bold text-xl">{{ Auth::user()->name }}</h1>
             </div>
+            <div class="flex gap-4 items-center">
+                <a href="{{ route('senha.edit') }}" class="text-gray-500 text-sm hover:text-gray-300">Trocar senha</a>
+            </div>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="text-gray-500 text-sm hover:text-gray-300">Sair</button>

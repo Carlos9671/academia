@@ -26,4 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/app', function () {
         return view('app.home');
     })->name('app.home');
+
+    Route::get('/senha', [App\Http\Controllers\Auth\PasswordController::class, 'edit'])->name('senha.edit');
+    Route::put('/senha', [App\Http\Controllers\Auth\PasswordController::class, 'update'])->name('senha.update');
 });
