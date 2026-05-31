@@ -27,7 +27,7 @@
                         <tr>
                             <td class="px-4 py-3 font-medium">{{ $gym->name }}</td>
                             <td class="px-4 py-3">{{ $gym->owner_name }}</td>
-                            <td class="px-4 py-3">{{ $gym->phone }}</td>
+                            <td class="px-4 py-3">{{ $gym->telefone_mascarado }}</td>
                             <td class="px-4 py-3">
                                 @if($gym->active)
                                     <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">Ativa</span>

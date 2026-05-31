@@ -23,4 +23,9 @@ class Gym extends Model
     {
         return $this->hasMany(CheckIn::class);
     }
+
+    public function getTelefoneMascaradoAttribute()
+    {
+        return substr($this->phone, 0, 5) . '****' . substr($this->phone, -3);
+    }
 }

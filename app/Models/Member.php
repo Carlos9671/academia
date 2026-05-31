@@ -47,4 +47,9 @@ class Member extends Authenticatable
     {
         return $this->hasMany(NotificationLog::class);
     }
+
+    public function getTelefoneMascaradoAttribute()
+    {
+        return substr($this->phone, 0, 5) . '****' . substr($this->phone, -3);
+    }
 }

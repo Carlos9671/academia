@@ -23,13 +23,13 @@
 
         @if(session('success'))
             <div class="bg-green-100 text-green-800 px-4 py-3 rounded mb-4">
-                {{ session('success') }}
+                {{ e(session('success')) }}
             </div>
         @endif
 
         @if(session('error'))
             <div class="bg-green-100 text-green-800 px-4 py-3 rounded mb-4">
-                {{ session('error') }}
+                {{ e(session('error')) }}
             </div>
         @endif
 

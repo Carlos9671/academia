@@ -28,7 +28,7 @@
                         <tr>
                             <td class="px-4 py-3 font-medium">{{ $member->name }}</td>
                             <td class="px-4 py-3">{{ $member->gym->name }}</td>
-                            <td class="px-4 py-3">{{ $member->phone }}</td>
+                            <td class="px-4 py-3">{{ $member->telefone_mascarado }}</td>
                             <td class="px-4 py-3">
                                 <span class="text-orange-500 font-bold">🔥 {{ $member->streak_current }} dias</span>
                             </td>

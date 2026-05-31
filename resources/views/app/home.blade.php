@@ -30,19 +30,6 @@
             <div class="text-6xl font-bold text-white mb-1">{{ Auth::user()->streak_current }}</div>
             <p class="text-gray-400 text-sm">dias de ofensiva</p>
 
-            @if(Auth::user()->streak_current >= 7)
-                <div class="mt-4 bg-orange-500 bg-opacity-20 text-orange-400 text-sm px-4 py-2 rounded-lg">
-                    🏆 Incrível! Você está em chamas!
-                </div>
-            @elseif(Auth::user()->streak_current >= 3)
-                <div class="mt-4 bg-yellow-500 bg-opacity-20 text-yellow-400 text-sm px-4 py-2 rounded-lg">
-                    💪 Continue assim, você está indo bem!
-                </div>
-            @else
-                <div class="mt-4 bg-gray-700 text-gray-400 text-sm px-4 py-2 rounded-lg">
-                    🚀 Vamos começar sua ofensiva!
-                </div>
-            @endif
         </div>
 
         <!-- Recorde -->
