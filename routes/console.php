@@ -9,3 +9,5 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('ofensivas:verificar')->weeklyOn(1, '00:01');
+
+Schedule::command('tokens:renovar')->dailyAt('00:00');

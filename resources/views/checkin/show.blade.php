@@ -12,13 +12,13 @@
 
         @if(session('success'))
             <div class="bg-green-500 bg-opacity-20 text-green-400 text-sm px-4 py-3 rounded-lg mb-4 text-center">
-                {{ session('success') }}
+                {{ e(session('success')) }}
             </div>
         @endif
 
         @if(session('error'))
             <div class="bg-red-500 bg-opacity-20 text-red-400 text-sm px-4 py-3 rounded-lg mb-4 text-center">
-                {{ session('error') }}
+                {{ e(session('error')) }}
             </div>
         @endif
 

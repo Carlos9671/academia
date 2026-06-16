@@ -12,6 +12,8 @@ class Gym extends Model
         'phone',
         'token',
         'active',
+        'daily_token',
+        'daily_token_date'
     ];
 
     public function members()

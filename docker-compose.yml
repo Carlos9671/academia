@@ -1,0 +1,9 @@
+services:
+    app:
+        build: .
+        container_name: academia-app
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/var/www
+        working_dir: /var/www
